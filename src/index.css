@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #3498db;
+  --color-secondary: #f4f4f4;
+  --color-navy: #1a2a3a;
+  --breakpoint-xs: 480px;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans antialiased transition-colors duration-500 overflow-x-hidden;
+    background-color: var(--color-secondary);
+    color: var(--color-navy);
+    width: 100%;
+    position: relative;
+  }
+  .dark body {
+    @apply bg-[#030303] text-slate-200;
+  }
+  h1, h2, h3, h4 {
+    @apply tracking-tight break-words;
+  }
+}
+
+@layer components {
+  .theme-card {
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl sm:rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500;
+    @apply p-4 xs:p-6 sm:p-10;
+  }
+  
+  .theme-input {
+    @apply w-full px-5 py-4 bg-gray-50/50 dark:bg-white/5 border border-gray-100 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm dark:text-white placeholder:text-gray-400;
+  }
+
+  .theme-btn-primary {
+    @apply bg-primary text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-primary/20 hover:bg-[#2980b9] active:scale-95 transition-all;
+  }
+
+  .glass-nav {
+    @apply fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b;
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-lg border-gray-200/50 dark:border-white/5;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 30px rgba(52, 152, 219, 0.4);
+  }
+  .bg-mesh {
+    @apply relative overflow-hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(203,100%,76%,0.15) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(201,100%,50%,0.1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(203,100%,76%,0.15) 0, transparent 50%);
+  }
+  .dark .bg-mesh {
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(203,100%,76%,0.05) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(201,100%,50%,0.05) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(203,100%,76%,0.05) 0, transparent 50%);
+  }
+}
